@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
   devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks'}
-  resources :plugins
+  resources :plugins do
+    resources :versions
+  end
 
   root to: 'plugins#index'
 

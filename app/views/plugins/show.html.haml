@@ -1,14 +1,37 @@
 %p#notice= notice
+.row
+  .col-md-6
 
-%h1= @plugin.name
-%p= @plugin.description
-%p= link_to @plugin.url, @plugin.url
-%code To install, run ./jasper-modules --install #{@plugin.slug}
+    %h1= @plugin.name
+    %p= @plugin.description
+    %p= link_to @plugin.url, @plugin.url
+    .well
+      %code To install, run ./jasper-modules --install #{@plugin.slug}
+    .panel
+      %h2 Versions
+      %table.table.table-striped
+        %tr
+          %td Number
+          %td Jasper Version
+          %td Package type
+          %td Notes
 
-.actions
-  - if can? :manage, @plugin
-    = link_to 'Delete', plugin_path(@plugin), method: :delete
-    \|
-    = link_to 'Edit', edit_plugin_path(@plugin)
-    \|
-  = link_to 'Back', plugins_path, class: 'btn btn-primary'
+        - @plugin.versions.each do |version|
+          %tr
+            %td=link_to version.number, [@plugin, version]
+            %td=version.jasper_version
+            %td=Version::TYPES[version.file_type]
+            %td=version.notes
+
+    -if can? :manage, @plugin
+      = link_to 'Add version', new_plugin_version_path(@plugin)
+
+
+
+    .actions
+      - if can? :manage, @plugin
+        = link_to 'Delete', plugin_path(@plugin), method: :delete
+        \|
+        = link_to 'Edit', edit_plugin_path(@plugin)
+        \|
+      = link_to 'Back', plugins_path, class: 'btn btn-primary'

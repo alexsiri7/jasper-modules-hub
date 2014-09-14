@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Plugin:
+  = @version.plugin
+%p
+  %b Number:
+  = @version.number
+%p
+  %b Jasper version:
+  = @version.jasper_version
+%p
+  %b File Type
+  = Version::TYPES[@version.file_type]
+%p
+  %b File
+  = @version.file
+%p
+  %b Notes:
+  = @version.notes
+
+= link_to 'Edit', edit_plugin_version_path(@plugin, @version)
+\|
+= link_to 'Back', plugin_versions_path(@plugin)

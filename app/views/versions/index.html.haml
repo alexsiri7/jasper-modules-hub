@@ -1,0 +1,25 @@
+%h1
+  Listing versions of
+  =link_to @plugin, @plugin
+
+%table
+  %tr
+    %th Number
+    %th Jasper version
+    %th Notes
+    %th
+    %th
+    %th
+
+  - @versions.each do |version|
+    %tr
+      %td= version.number
+      %td= version.jasper_version
+      %td= version.notes
+      %td= link_to 'Show', [@plugin, version]
+      %td= link_to 'Edit', edit_plugin_version_path(@plugin, version)
+      %td= link_to 'Destroy', [@plugin, version], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Version', new_plugin_version_path(@plugin)
