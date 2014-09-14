@@ -48,3 +48,6 @@ group :development do
   gem "binding_of_caller"
   gem 'better_errors'
 end
+
+gem 'rails_12factor', group: :production
+
