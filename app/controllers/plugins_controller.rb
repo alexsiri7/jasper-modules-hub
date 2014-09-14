@@ -27,6 +27,7 @@ class PluginsController < ApplicationController
   # POST /plugins.json
   def create
     @plugin = Plugin.new(plugin_params)
+    @plugin.user = current_user
 
     respond_to do |format|
       if @plugin.save
