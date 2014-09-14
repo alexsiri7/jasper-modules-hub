@@ -1,7 +1,5 @@
 class PluginsController < ApplicationController
-  before_action :set_plugin, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :index]
-
+  load_and_authorize_resource
 
   # GET /plugins
   # GET /plugins.json
@@ -65,11 +63,6 @@ class PluginsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_plugin
-      @plugin = Plugin.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def plugin_params
       params.require(:plugin).permit(:name, :description, :url)
