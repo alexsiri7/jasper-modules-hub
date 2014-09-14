@@ -1,4 +1,7 @@
-- model_class = Plugin
-.page-header
-  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
-= render :partial => "form"
+%h1 Editing plugin
+
+= render 'form'
+
+= link_to 'Show', @plugin
+\|
+= link_to 'Back', plugins_path

@@ -5,7 +5,7 @@ class Ability
     can [:show, :index], Plugin
     if user
       can [:new, :create], Plugin
-      can [:edit, :update, :destroy], Plugin, user_id: user.id
+      can [:manage], Plugin, user_id: user.id
     end
   end
 end

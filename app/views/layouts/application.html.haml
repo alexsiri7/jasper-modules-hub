@@ -19,34 +19,25 @@
 
 
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+    %nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed{type: 'button', 'data-toggle'=>"collapse", 'data-target'=>"#bs-example-navbar-collapse-1"}
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") JasperModulesHub
-          .container.nav-collapse
-            %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+          =link_to 'JasperModulesHub', root_path, class: 'navbar-brand'
+        .container.navbar-collapse#bs-example-navbar-collapse-1
+          %ul.nav.navbar-nav.navbar-right
+            %li= link_to 'New Plugin', new_plugin_path
+            -if current_user
+              %li= link_to "Logout", destroy_user_session_path
+            -else
+              %li= link_to "Login with github", "/users/auth/github"
 
     .container
 
       .row
-        .span9
-          = bootstrap_flash
+        .col-md-12
           = yield
-        .span3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
-    
-      %footer
-        %p &copy; Company 2014
+

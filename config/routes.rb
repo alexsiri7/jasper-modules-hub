@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks'}
-
   resources :plugins
+
   root to: 'plugins#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
