@@ -3,10 +3,12 @@
 %h1= @plugin.name
 %p= @plugin.description
 %p= link_to @plugin.url, @plugin.url
+%code To install, run ./jasper-modules --install #{@plugin.slug}
 
-- if can? :manage, @plugin
-  = link_to 'Delete', plugin_path(@plugin), method: :delete
-  \|
-  = link_to 'Edit', edit_plugin_path(@plugin)
-  \|
-= link_to 'Back', plugins_path, class: 'btn btn-primary'
+.actions
+  - if can? :manage, @plugin
+    = link_to 'Delete', plugin_path(@plugin), method: :delete
+    \|
+    = link_to 'Edit', edit_plugin_path(@plugin)
+    \|
+  = link_to 'Back', plugins_path, class: 'btn btn-primary'
