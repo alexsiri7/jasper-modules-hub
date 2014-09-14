@@ -43,3 +43,8 @@ gem 'devise'
 gem "omniauth"
 gem "omniauth-github"
 gem 'cancancan'
+
+group :development do
+  gem "binding_of_caller"
+  gem 'better_errors'
+end
