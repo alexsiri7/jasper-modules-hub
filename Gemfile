@@ -49,5 +49,8 @@ group :development do
   gem 'better_errors'
 end
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'unicorn'
+  gem 'rails_12factor'
+end
 
