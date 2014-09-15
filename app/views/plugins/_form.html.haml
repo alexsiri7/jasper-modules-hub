@@ -10,5 +10,8 @@
     = f.input :description
     = f.input :url
 
-    .actions
-      = f.submit 'Save', class: 'btn btn-success'
+    .panel.panel-default
+      .panel-body
+        = f.submit 'Save', class: 'btn btn-success'
+        - back_path = @plugin || plugins_path
+        = link_to 'Cancel', back_path, class: 'btn btn-default'

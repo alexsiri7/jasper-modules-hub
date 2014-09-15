@@ -23,15 +23,11 @@
             %td=Version::TYPES[version.file_type]
             %td=version.notes
 
-    -if can? :manage, @plugin
-      = link_to 'Add version', new_plugin_version_path(@plugin)
 
-
-
-    .actions
-      - if can? :manage, @plugin
-        = link_to 'Delete', plugin_path(@plugin), method: :delete
-        \|
-        = link_to 'Edit', edit_plugin_path(@plugin)
-        \|
-      = link_to 'Back', plugins_path, class: 'btn btn-primary'
+    .panel.panel-default
+      .panel-body
+        - if can? :manage, @plugin
+          = link_to 'Delete', plugin_path(@plugin), method: :delete, class: 'btn btn-danger'
+          = link_to 'Add version', new_plugin_version_path(@plugin), class: 'btn btn-info'
+          = link_to 'Edit', edit_plugin_path(@plugin), class: 'btn btn-info'
+        = link_to 'Back', plugins_path, class: 'btn btn-default'
